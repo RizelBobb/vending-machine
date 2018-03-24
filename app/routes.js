@@ -87,24 +87,32 @@ app.put('/messages-decrease', (req, res) => {
     res.send(result)
   })
 })
-// app.put('/messages', (req, res) => {
-//   db.collection('messages')
-//   .findOneAndUpdate({snack: req.body.snack }, {
-//     //The $inc operator increments a field by a specified value
-//     $inc: {
-//       count: req.body.count -1 ,
-//
-//     }
-//   }, {
-//     sort: {_id: -1},
-//     upsert: true,
-//
-//   }, (err, result) => {
-//     if (err) throw err
-//
-//     res.send(result)
-//   })
-// })
+
+// serve the homepage
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.ejs');
+});
+app.get('/clicks', (req, res) => {
+
+  db.collection('clicks').find().toArray((err, result) => {
+    if (err) return console.log(err);
+    res.send(result);
+  });
+});
+
+app.post('/clicked', (req, res) => {
+  const click = {clickTime: new Date()};
+  console.log(click);
+  console.log(db);
+
+  db.collection('clicks').save(click, (err, result) => {
+    if (err) {
+      return console.log(err);
+    }
+    console.log('click added to db');
+    res.sendStatus(201);
+  });
+});
 
 
 app.delete('/messages', (req, res) => {

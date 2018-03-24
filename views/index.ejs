@@ -1,50 +1,61 @@
 <!doctype html>
 <html>
+
 <head>
-    <title>21 Savage Fan Site</title>
-    <link rel="stylesheet" href="font-awesome.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+  <title>Vending Machine</title>
+  <link rel="stylesheet" href="font-awesome.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="container">
+  <div class="container">
     <div class="jumbotron text-center">
-        <h1>Quick Vending Machine</h1>
+          <h1 id="title">Quick Vending Machine</h1>
+      <div id="machine">
+
         <div class="col-sm-6">
-          <h3 id="qTitle">Queue</h3>
           <ul class="messages">
-          <% for(var i=0; i<messages.length; i++) {%>
-            <li class="message">
-              <span><%= messages[i].snack %></span>
-              <!-- <span><%= messages[i].count %></span> -->
+            <% for(var i=0; i<messages.length; i++) {%>
+              <li class="message">
+                <span><%= messages[i].snack %></span>
+                <!-- <span><%= messages[i].count %></span> -->
                 <span id="makeGreen"><%= messages[i].thumbUp %></span>
-            </li>
-          <% } %>
+              </li>
+              <% } %>
           </ul>
         </div>
-
-          <button id="doritos" value="1" name="snackItem">1</button>
-          <button id="twizzlers" value="1" name="snackItem">2</button>
-          <button id="crunch" value="1" name="snackItem">3</button>
-          <button id="fanta" value="1" name="snackItem">4</button>
-          <button id="pretzels" value="1" name="snackItem">5</button>
+      </div>
 
 
-
-
-        <p>Login or Signup:</p>
-
-        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span>Login</a>
-        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span>Signup</a>
+      <div id=buttonPad>
+        <p id="payMsg">Please pay $1</p>
+        <button id="doritos" value="1" name="snackItem">1</button>
+        <button id="twizzlers" value="1" name="snackItem">2</button>
+        <button id="crunch" value="1" name="snackItem">3</button>
+        <button id="fanta" value="1" name="snackItem">4</button>
+        <button id="pretzels" value="1" name="snackItem">5</button>
+        <button id="myButton">Pay</button>
+      </div>
 
 
 
 
 
+      <p>Login or Signup:</p>
+
+      <a href="/login" class="btn btn-default"><span class="fa fa-user"></span>Login</a>
+      <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span>Signup</a>
+      <p id="counter">How much $ did we fundraise?</p>
 
 
-<script src="main.js"></script>
+
+
+
+
+      <script src="main.js"></script>
 
 </body>
+
 </html>
